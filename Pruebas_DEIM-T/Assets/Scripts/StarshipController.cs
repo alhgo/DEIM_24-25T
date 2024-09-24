@@ -13,6 +13,7 @@ public class StarshipController : MonoBehaviour
     float move;
     float moveL;
     float rotation;
+    float rotationL;
 
     // Start is called before the first frame update
     void Start()
@@ -40,9 +41,11 @@ public class StarshipController : MonoBehaviour
         move = Input.GetAxis("Vertical");
         moveL = Input.GetAxis("Horizontal");
         rotation = Input.GetAxis("Rotar");
+        rotationL = Input.GetAxis("RotarY");
         transform.Translate(Vector3.forward * Time.deltaTime * speed * move);
         transform.Translate(Vector3.right * Time.deltaTime * speed * moveL, Space.World);
         transform.Rotate(Vector3.forward * -rotation * Time.deltaTime * rotationSpeed * 360f );
+        transform.Rotate(Vector3.up * -rotationL * Time.deltaTime * rotationSpeed * 360f );
     }
 
     void Shoot()
